@@ -1,10 +1,9 @@
 import discord
 from discord.ext import commands
 import os
-import asyncio
 import logging
 from dotenv import load_dotenv
-from contenido import TikTokNotifier
+from database import db
 
 # ==================== CONFIGURACIÓN DE LOGGING ====================
 logging.basicConfig(
@@ -86,12 +85,6 @@ class TammyBot(commands.Bot):
             ),
             status=discord.Status.online
         )
-                # ── Notificador de TikTok ──
-        canal_live = int(os.getenv('TIKTOK_LIVE_CHANNEL_ID'))
-        canal_videos = int(os.getenv('TIKTOK_VIDEO_CHANNEL_ID'))
-        usuario_tiktok = os.getenv('TIKTOK_USERNAME')
-        self.notifier = TikTokNotifier(self, canal_live, canal_videos, usuario_tiktok)
-        await self.notifier.start()
 
     async def on_command_error(self, ctx, error):
         """Manejo global de errores de comandos de prefijo."""

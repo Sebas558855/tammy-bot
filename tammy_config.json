@@ -1,6 +1,0 @@
-{
-  "max_history": 15,
-  "cooldown_seconds": 3,
-  "typing_effect": true,
-  "max_response_length": 1800
-}
